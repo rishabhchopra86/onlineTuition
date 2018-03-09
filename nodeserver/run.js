@@ -43,6 +43,8 @@ app.post('/api/:tablename',  (req, res)=> {
         res.send(data);
     });
 });
+//http://domainname/api/(any table name) || post body form in json
+//data is on key value pair , key must be same as table field => update data in given table
 app.put('/api/:tablename',  (req, res)=> {
     var dt = dateTime.create();
     var formatted = dt.format('Y-m-d H:M:S');

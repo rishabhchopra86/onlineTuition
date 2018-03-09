@@ -74,9 +74,30 @@ module.exports = function(host,user,password,databsase) {
             callback(result);
         });
     }
-    this.updatedata= (tablename,data,id,callback) => {
+    //update  data from given table by id
+    this.updatedata= (tablename,data,callback) => {
 
-        con.query("update " + tablename +" set "+1+" where id="+id, function (err, result, fields) {
+        var set="";
+        for(var d in data) {
+            if(d!="id") {
+                set += d + "=";
+                if (typeof data[d] == "string") {
+                    set = set + "'" + data[d] + "',";
+                    //this is for like 'Rishabh,'
+                }
+                else if (typeof data[d] == "number") {
+                    set = set + data[d] + ",";
+                    //this is for like 53,
+                }
+                else {
+                    set = set + "NULL,";
+                    //this is for like NULL,
+                }
+            }
+        }
+        set=set.slice(0, -1);
+        console.log("update " + tablename +" set "+set+" where id="+data.id);
+        con.query("update " + tablename +" set "+set+" where id="+data.id, function (err, result, fields) {
             if (err) callback(err);;
             callback(result);
         });
