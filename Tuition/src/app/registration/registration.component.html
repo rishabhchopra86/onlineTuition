@@ -1,66 +1,113 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-9 col-md-offset-2">
       <div class="panel panel-login">
         <div class="panel-heading ">
           <div class="row">
-            <div class="btn-group btngrp">
-              <button type="button" id="show-preview"  class="{{flag == 'S' ? 'btn btn-info active' : 'btn btn-info'}} tab-btn " name="studentbtn" (click)="toggleButton('S')" >I'm Student</button>
-              <button type="button" id="show-html" class="{{flag == 'T' ? 'btn btn-info active' : 'btn btn-info'}} tab-btn "  name="teacherbtn" (click)="toggleButton('T')" >I'm Teacher</button>
+            <h3 style="text-align: center"><strong>Registration Page</strong></h3>
+            <div class="col-md-12 btngrp">
+              <button type="button" id="show-preview"  class="{{flag == 'S' ? 'btn btn-info active' : 'btn btn-info'}} tab-btn col-md-6 " name="studentbtn" (click)="toggleButton('S')" >I'm Student</button>
+              <button type="button" id="show-html" class="{{flag == 'T' ? 'btn btn-info active' : 'btn btn-info'}} tab-btn col-md-6"  name="teacherbtn" (click)="toggleButton('T')" >I'm Teacher</button>
             </div>
-            <!--<input type="button" name="studentbtn" value="I'm Student" class="btn btn-primary tab-btn " />-->
-            <!--<input type="button" name="studentbtn" value="I'm Teacher" class="btn btn-primary tab-btn" />-->
-            <!--<div class="col-xs-6">-->
-              <!--<a href="#" class="active" id="login-form-link">Login</a>-->
-            <!--</div>-->
-            <!--<div class="col-xs-6">-->
-              <!--<a href="#" id="register-form-link">Register</a>-->
-            <!--</div>-->
-          </div>
-          <hr>
-        </div>
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-12">
-              <form id="login-form" method="post" role="form" style="display: block;">
-                <div class="form-group">
-                  <input type="text" name="firstname" tabindex="1" class="form-control" placeholder="Enter Firstname">
+            <div class="panel-body">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <input type="text" name="firstName" placeholder="Enter FirstName" class="form-control cmn" tabindex="1" maxlength="50">
+
+                  <input type="text" name="email" placeholder="Enter Email" class="form-control cmn" tabindex="3" maxlength="50">
+
+                  <select name="country" tabindex="5"  class="form-control cmn" >
+                    <option value="">Select Country</option>
+                    <option ></option>
+                  </select>
+
+                  <select name="city" tabindex="7"  class="form-control cmn">
+                    <option value="">Select City</option>
+                    <option ></option>
+                  </select>
+
+                  <select name="subject" tabindex="9"  class="form-control cmn">
+                    <option value="">Select Subject</option>
+                    <option ></option>
+                  </select>
+
+                  <input type="file" tabindex="13" name="proPic" id="avatar" class="form-control cmn" (change)="onFileChange($event)">
+                  <img [src]="url" style="height: 150px;width:150px;margin-top:5px; border: 1px solid gray; border-radius: 5px;" (error)="onImageError($event)">
                 </div>
-                <div class="form-group">
-                  <input type="text" name="lastname" tabindex="2" class="form-control" placeholder="Enter Lastname">
-                </div>
-                <div class="form-group">
-                  <input type="text" name="email" tabindex="3" class="form-control" placeholder="Enter Email">
-                </div>
-                <div class="form-group">
-                  <input type="password" name="password" tabindex="4" class="form-control" placeholder="Enter Password">
-                </div>
-                <!--<div class="form-group">-->
-                  <!--<select class='form-control' name="Country" >-->
-                    <!--<option class='option' >Enter Select Country</option>-->
-                  <!--</select>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                  <!--<select class='form-control' name="State" >-->
-                    <!--<option class='option' >Enter Select State</option>-->
-                  <!--</select>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                  <!--<select class='form-control' name="City" >-->
-                    <!--<option class='option' >Enter Select City</option>-->
-                  <!--</select>-->
-                <!--</div>-->
-                <div class="form-group">
-                  <input type="text" name="phoneno" tabindex="6" class="form-control" placeholder="Enter PhoneNo">
-                </div>
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                      <input type="submit" name="getstart" id="getstart" class="form-control btn btn-login" (click)="getStarted(flag)" value="Get Started !">
+
+                <div class="col-md-6">
+
+                  <input type="text" name="lastName" placeholder="Enter LastName" class="form-control cmn" tabindex="2" maxlength="50">
+
+                  <input type="password" name="password" placeholder="Enter Password"  class="form-control cmn" tabindex="4" maxlength="50">
+
+                  <select name="state" tabindex="6"  class="form-control cmn" >
+                    <option value="">Select State</option>
+                    <option ></option>
+                  </select>
+
+                  <select name="class" tabindex="8"  class="form-control cmn" >
+                    <option value="">Select Standard</option>
+                    <option ></option>
+                  </select>
+
+                  <div class="col-md-12">
+                    <div class="col-md-6 bottom">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          Male
+                        </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 bottom">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                          Female  </label>
+                      </div>
                     </div>
                   </div>
+                  <div class="col-md-12">
+                    <div class="col-md-6 bottom">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option1" checked>
+                          Morning(8-10AM)   </label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 bottom">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios4" value="option2">
+                          Evening(5-7PM)</label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="col-md-6 bottom">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios5" value="option1" checked>
+                        One to One</label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 bottom">
+                      <div class="radio">
+                        <label>
+                          <input type="radio" name="optionsRadios" id="optionsRadios6" value="option2">
+                        One to Many</label>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!--<img *ngIf="!url" src="https://katiewagnersocialmedia.com//wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg" style="height: 150px;width:150px; border: 1px solid gray;margin-top:5px; border-radius: 5px;">-->
+                  <button class="btn btn-primary btnreg" (click)="onRegister(register)">Register</button>
+                  <button class="btn btn-danger btnreg">Cancel</button>
                 </div>
-              </form>
+
+              </div>
             </div>
           </div>
         </div>

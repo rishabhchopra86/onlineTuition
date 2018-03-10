@@ -13,7 +13,6 @@ import { HomeComponent } from './DashBoard/home/home.component';
 import { BecomeTeacherComponent } from './DashBoard/become-teacher/become-teacher.component';
 import { AboutusComponent } from './DashBoard/aboutus/aboutus.component';
 import { ContactusComponent } from './DashBoard/contactus/contactus.component';
-
 @NgModule({
   declarations: [
     AppComponent,
