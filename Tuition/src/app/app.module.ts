@@ -9,6 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import { StudentComponent } from './student/student.component';
 import { ToastrModule } from 'ngx-toastr';
+import { HomeComponent } from './DashBoard/home/home.component';
+import { BecomeTeacherComponent } from './DashBoard/become-teacher/become-teacher.component';
+import { AboutusComponent } from './DashBoard/aboutus/aboutus.component';
+import { ContactusComponent } from './DashBoard/contactus/contactus.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +20,11 @@ import { ToastrModule } from 'ngx-toastr';
     RegistrationComponent,
     LoginComponent,
     TeacherComponent,
-    StudentComponent
+    StudentComponent,
+    HomeComponent,
+    BecomeTeacherComponent,
+    AboutusComponent,
+    ContactusComponent
   ],
   imports: [
     BrowserModule,
