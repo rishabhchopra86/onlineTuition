@@ -35,9 +35,9 @@ module.exports = function(host,user,password,databsase) {
                //this is for like NULL,
            }
         }
-        s=s.slice(0, -1);
-        s1=s1.slice(0, -1);
-        con.query("insert into " + tablename +" ("+s+") values("+s1+")", function (err, result, fields) {
+        key=key.slice(0, -1);
+        value=value.slice(0, -1);
+        con.query("insert into " + tablename +" ("+key+") values("+value+")", function (err, result, fields) {
             if (err) callback(err);
             callback(result);
         });
@@ -55,7 +55,7 @@ module.exports = function(host,user,password,databsase) {
     this.login = (tablename,email, password,callback) => {
         con.query("SELECT * FROM " + tablename + " where email='" + email + "' and password='"+password+"' and isActive=1", function (err, result, fields) {
             if (err) callback(err);;
-            callback(result);
+            callback(result[0]);
         });
     }
 
