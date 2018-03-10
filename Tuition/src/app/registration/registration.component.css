@@ -102,7 +102,25 @@ body {
   width: 47%;
   height: 50%;
 }
+.navbar{
+  background-color: aqua;
+}
+.btn-next{
+  float: right;
+}
+max {
+  margin: 30px;
+}
+.cmn{
+  margin-bottom: 20px;
+}
 .btngrp{
-  width: 90%;
-  height: 84px;
+  margin-bottom: 50px;
+}
+.btnreg[_ngcontent-c1] {
+  width: 80%;
+  margin: 0 0 10px;
+}
+.bottom{
+  margin-bottom: 15px;
 }

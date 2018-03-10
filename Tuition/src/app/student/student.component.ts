@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-declare const $: any;
 
 @Component({
   selector: 'app-student',
@@ -12,7 +11,6 @@ export class StudentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    $('#rootwizard').bootstrapWizard();
-  }
 
+  }
 }
