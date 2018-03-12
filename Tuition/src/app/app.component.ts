@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoginService} from "./Shared/login.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Online Tution Class';
+  constructor(private log:LoginService){
+
+  }
 }
