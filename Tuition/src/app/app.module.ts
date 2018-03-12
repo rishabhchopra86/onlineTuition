@@ -14,6 +14,8 @@ import { BecomeTeacherComponent } from './DashBoard/become-teacher/become-teache
 import { AboutusComponent } from './DashBoard/aboutus/aboutus.component';
 import { ContactusComponent } from './DashBoard/contactus/contactus.component';
 import {LoginService} from "./Shared/login.service";
+import {HttpClientModule} from "@angular/common/http";
+import {TeacherService} from "./Shared/teacher.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,9 +32,10 @@ import {LoginService} from "./Shared/login.service";
     BrowserModule,
     RoutingModule,
     FormsModule,
+    HttpClientModule,
     ToastrModule.forRoot()
   ],
-  providers: [LoginService],
+  providers: [LoginService,TeacherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
