@@ -13,6 +13,7 @@
     "express": "^4.16.2",
     "jsonwebtoken": "^8.2.0",
     "mysql": "^2.15.0",
-    "node-datetime": "^2.0.6"
+    "node-datetime": "^2.0.6",
+    "nodemailer": "^4.6.2"
   }
 }

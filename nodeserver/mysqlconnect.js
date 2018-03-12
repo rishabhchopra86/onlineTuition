@@ -53,9 +53,15 @@ module.exports = function(host,user,password,databsase) {
 
     //select all data from given table having username and password
     this.login = (tablename,email, password,callback) => {
-        con.query("SELECT * FROM " + tablename + " where email='" + email + "' and password='"+password+"' and isActive=1", function (err, result, fields) {
-            if (err) callback(err);;
-            callback(result[0]);
+
+        con.query("SELECT * FROM " + tablename + " where email='" + email + "' and password='"+password+"' and isActive=1 and isApproved=1 limit 1", function (err, result, fields) {
+            if (err) callback(false,err);
+            if(result.length ==0){
+                callback(false,result);
+            }else{
+                callback(true,result);
+            }
+
         });
     }
 
@@ -70,7 +76,7 @@ module.exports = function(host,user,password,databsase) {
     //delete  data from given table by id ,here isActive will became 0
     this.deleteByPk = (tablename,id,callback) => {
         con.query("update " + tablename +" set isActive=0 where id="+id, function (err, result, fields) {
-            if (err) callback(err);;
+            if (err) callback(err);
             callback(result);
         });
     }
@@ -96,7 +102,7 @@ module.exports = function(host,user,password,databsase) {
             }
         }
         set=set.slice(0, -1);
-        console.log("update " + tablename +" set "+set+" where id="+data.id);
+
         con.query("update " + tablename +" set "+set+" where id="+data.id, function (err, result, fields) {
             if (err) callback(err);;
             callback(result);
