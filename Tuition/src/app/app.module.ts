@@ -13,6 +13,11 @@ import { HomeComponent } from './DashBoard/home/home.component';
 import { BecomeTeacherComponent } from './DashBoard/become-teacher/become-teacher.component';
 import { AboutusComponent } from './DashBoard/aboutus/aboutus.component';
 import { ContactusComponent } from './DashBoard/contactus/contactus.component';
+import {RegisterService} from '../app/Shared/register.service';
+import {LoginService} from '../app/Shared/login.service';
+import {StudentService} from '../app/Shared/student.service';
+import {TeacherService} from '../app/Shared/teacher.service';
+import {HttpClientModule} from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +34,10 @@ import { ContactusComponent } from './DashBoard/contactus/contactus.component';
     BrowserModule,
     RoutingModule,
     FormsModule,
+    HttpClientModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [RegisterService,LoginService,StudentService,TeacherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

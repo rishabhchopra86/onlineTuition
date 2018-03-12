@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {Register} from '../Module/register.module';
+import {RegisterService} from '../Shared/register.service';
+import {register} from "ts-node";
+
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -11,7 +14,14 @@ flag : any = 'S';
   defaultImage: String = 'https://katiewagnersocialmedia.com//wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg';
   url: any;
   register:Register;
-  constructor(private router: Router) { }
+  States1: any = {
+    Gujarat: ['Navsari', 'Surat', 'Ahemdavad',],
+    Goa: ['panji', 'Donapola','Colva'],
+    Maharastra: ['Mumbai', 'Pune']
+  };
+
+  states: any = Object.keys(this.States1);
+  constructor(private router: Router,private registerservice: RegisterService) { }
 
   ngOnInit() {
  this.register = new Register();
@@ -21,8 +31,12 @@ flag : any = 'S';
   }
   onRegister(flag){
     if(this.flag=='S'){
+      this.registerservice.insertData(this.register).subscribe(res => {
+         console.log(res);
+      })
       this.router.navigate(['student']);
     }else{
+
       this.router.navigate(['teacher']);
     }
   }

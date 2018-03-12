@@ -11,25 +11,30 @@
             </div>
             <div class="panel-body">
               <div class="row">
-
+                <form method="post" name="form" class="form-horizontal" #form="ngForm" novalidate >
                 <div class="col-md-6">
-                  <input type="text" name="firstName" placeholder="Enter FirstName" class="form-control cmn" tabindex="1" maxlength="50">
-
-                  <input type="text" name="email" placeholder="Enter Email" class="form-control cmn" tabindex="3" maxlength="50">
-
-                  <select name="country" tabindex="5"  class="form-control cmn" >
+                  <input type="text" pattern="[a-zA-Z][a-zA-Z ]+" name="firstname" placeholder="Enter FirstName" class="form-control cmn" tabindex="1" [(ngModel)]="register.firstname" #firstname="ngModel" required>
+                  <div *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"
+                       class="alert alert-danger">
+                    <div *ngIf="firstname.errors.required">
+                      FirstName is required.
+                    </div>
+                  </div>
+                  <input type="text" name="email" placeholder="Enter Email" class="form-control cmn" tabindex="3" [(ngModel)]="register.email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                       class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                      Password is required.
+                    </div>
+                  </div>
+                  <select name="country" tabindex="5"  class="form-control cmn" [(ngModel)]="register.country" #country="ngModel" >
                     <option value="">Select Country</option>
                     <option ></option>
                   </select>
 
-                  <select name="city" tabindex="7"  class="form-control cmn">
-                    <option value="">Select City</option>
-                    <option ></option>
-                  </select>
-
-                  <select name="subject" tabindex="9"  class="form-control cmn">
-                    <option value="">Select Subject</option>
-                    <option ></option>
+                  <select name="city" tabindex="7"  class="form-control cmn" [(ngModel)]="register.city" #city="ngModel">
+                    <option value="" selected>Select City</option>
+                    <option class='option' *ngFor="let city of States1[register.State]" [value]="city">{{city}}</option>
                   </select>
 
                   <input type="file" tabindex="13" name="proPic" id="avatar" class="form-control cmn" (change)="onFileChange($event)">
@@ -38,25 +43,35 @@
 
                 <div class="col-md-6">
 
-                  <input type="text" name="lastName" placeholder="Enter LastName" class="form-control cmn" tabindex="2" maxlength="50">
-
-                  <input type="password" name="password" placeholder="Enter Password"  class="form-control cmn" tabindex="4" maxlength="50">
-
-                  <select name="state" tabindex="6"  class="form-control cmn" >
+                  <input type="text" name="lastName" placeholder="Enter LastName" class="form-control cmn" [(ngModel)]="register.lastname" #lastname="ngModel" tabindex="2" required>
+                  <div *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"
+                       class="alert alert-danger">
+                    <div *ngIf="lastname.errors.required">
+                      LastName is required.
+                    </div>
+                  </div>
+                  <input type="password" name="password" placeholder="Enter Password"  class="form-control cmn" [(ngModel)]="register.password" #password="ngModel" tabindex="4" required>
+                  <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                       class="alert alert-danger">
+                    <div *ngIf="password.errors.required">
+                      Password is required.
+                    </div>
+                  </div>
+                  <select name="state" tabindex="6"  class="form-control cmn" [(ngModel)]="register.state" #state="ngModel" >
                     <option value="">Select State</option>
-                    <option ></option>
+                    <option class="option" *ngFor='let state of states' [value]="state">{{state}}</option>
                   </select>
 
-                  <select name="class" tabindex="8"  class="form-control cmn" >
-                    <option value="">Select Standard</option>
-                    <option ></option>
-                  </select>
+                  <!--<select multiple name="class" tabindex="8"  class="form-control cmn" >-->
+                    <!--<option value="">Select Standard</option>-->
+                    <!--<option ></option>-->
+                  <!--</select>-->
 
                   <div class="col-md-12">
                     <div class="col-md-6 bottom">
                       <div class="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                          <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" tabindex="10" checked>
                           Male
                         </label>
                       </div>
@@ -64,49 +79,20 @@
                     <div class="col-md-6 bottom">
                       <div class="radio">
                         <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                          <input type="radio" name="optionsRadios" id="optionsRadios2" tabindex="11" value="option2">
                           Female  </label>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-12">
-                    <div class="col-md-6 bottom">
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios3" value="option1" checked>
-                          Morning(8-10AM)   </label>
-                      </div>
-                    </div>
-                    <div class="col-md-6 bottom">
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios4" value="option2">
-                          Evening(5-7PM)</label>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="col-md-6 bottom">
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios5" value="option1" checked>
-                        One to One</label>
-                      </div>
-                    </div>
-                    <div class="col-md-6 bottom">
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="optionsRadios" id="optionsRadios6" value="option2">
-                        One to Many</label>
-                      </div>
-                    </div>
+                  <div *ngIf="flag == 'T'">
+                    <input type="text" name="qualification" placeholder="Enter Qualification" class="form-control cmn" [(ngModel)]="register.qualification" #qualification="ngModel" tabindex="12" required>
                   </div>
 
                   <!--<img *ngIf="!url" src="https://katiewagnersocialmedia.com//wp-content/uploads/2012/08/Facebook-Blank-Photo.jpg" style="height: 150px;width:150px; border: 1px solid gray;margin-top:5px; border-radius: 5px;">-->
-                  <button class="btn btn-primary btnreg" (click)="onRegister(register)">Register</button>
+                  <button class="btn btn-primary btnreg" [disabled]="!form.valid" (click)="onRegister(register)">Register</button>
                   <button class="btn btn-danger btnreg">Cancel</button>
                 </div>
-
+                </form>
               </div>
             </div>
           </div>

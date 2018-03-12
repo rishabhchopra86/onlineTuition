@@ -18,5 +18,5 @@ export class Register {
   state: string;
   city: string;
   phoneno: string;
-
+  qualification: string;
 }

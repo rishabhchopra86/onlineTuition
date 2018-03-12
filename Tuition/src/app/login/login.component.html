@@ -6,14 +6,25 @@
         <img class="profile-img" src="../../assets/create-profile.png"
              alt="Image">
         <form class="form-signin">
-          <input type="text" name="email" class="form-control inputlogin" placeholder="Email" [(ngModel)]="login.email" #email="ngModel" required>
-          <input type="password" name="password" class="form-control inputlogin" placeholder="Password" [(ngModel)]="login.password" #password="ngModel" required>
-          <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onLogin(login)">
+          <input type="text" name="email" class="form-control inputlogin" placeholder="Email" [(ngModel)]="login.email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
+               class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+              Email is required.
+            </div>
+            <div [hidden]="!email.hasError('pattern')">Email format should be
+              <small><b>joe@abc.com</b></small>
+            </div>
+          </div>
+           <input type="password" name="password" class="form-control inputlogin" placeholder="Password" [(ngModel)]="login.password" #password="ngModel" required>
+            <div *ngIf="password.invalid && (password.dirty || password.touched)"
+                 class="alert alert-danger">
+              <div *ngIf="password.errors.required">
+                Password is required.
+              </div>
+            </div>
+              <button class="btn btn-lg btn-primary btn-block" type="submit" (click)="onLogin(login)">
             Sign in</button>
-          <!--<label class="checkbox pull-left">-->
-            <!--<input type="checkbox" value="remember-me">-->
-            <!--Remember me-->
-          <!--</label>-->
         </form>
       </div>
       <a href="/register" class="text-center new-account">Create an account </a>
