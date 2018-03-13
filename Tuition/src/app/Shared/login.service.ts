@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 export class LoginService {
   role:String;
   constructor() {
-    this.role='student';
+    this.role='';
   }
 
 }

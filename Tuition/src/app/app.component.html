@@ -3,21 +3,27 @@
     <div class="navbar-header">
       <a class="navbar-brand">{{title}}</a>
     </div>
-    <ul class="nav navbar-nav">
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='teacher'"><a routerLink="teacherdb">DashBoard</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='student'"><a routerLink="studentdb">DashBoard</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='admin'"><a routerLink="admindb">DashBoard</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role==''"><a routerLink="">Home</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role==''"><a routerLink="teacherslist">Teachers</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='admin'"><a routerLink="admin-subjects">Subjects</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='admin'"><a routerLink="admin-classes">Classes</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='admin'"><a routerLink="admin-students">Students</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='admin'"><a routerLink="admin-teachers">Teachers</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='student'"><a routerLink="student-subjects">Subjects</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='teacher'"><a routerLink="teacher-classes">Classes</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role=='teacher'"><a routerLink="teacher-students">Students</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role==''"><a routerLink="about">About</a></li>
-      <li role="presentation" routerLinkActive="active" *ngIf="login.role==''"><a routerLink="contact">Contact</a></li>
+    <ul class="nav navbar-nav" *ngIf="login.role=='admin'">
+      <li role="presentation" routerLinkActive="active" ><a routerLink="admindb">DashBoard</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="admin-subjects">Subjects</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="admin-classes">Classes</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="admin-students">Students</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="admin-teachers">Teachers</a></li>
+    </ul>
+    <ul class="nav navbar-nav" *ngIf="login.role=='teacher'">
+      <li role="presentation" routerLinkActive="active" ><a routerLink="teacherdb">DashBoard</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="teacher-classes">Classes</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="teacher-students">Students</a></li>
+    </ul>
+    <ul class="nav navbar-nav"  *ngIf="login.role=='student'">
+      <li role="presentation" routerLinkActive="active" ><a routerLink="studentdb">DashBoard</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="student-subjects">Subjects</a></li>
+    </ul>
+    <ul class="nav navbar-nav" *ngIf="login.role==''">
+      <li role="presentation" routerLinkActive="active" ><a routerLink="">Home</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="teacherslist">Teachers</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="about">About</a></li>
+      <li role="presentation" routerLinkActive="active" ><a routerLink="contact">Contact</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <li class="dropdown" *ngIf="login.role">
